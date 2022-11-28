@@ -53,6 +53,7 @@ def solveMaze_ldfs(maze,  start, end):
     return True
 
 def readMaze():
+
     with open('Maze.txt') as file:
         maze_txt = file.read()
 
