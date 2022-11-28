@@ -53,7 +53,7 @@ def solveMaze_ldfs(maze,  start, end):
     return True
 
 def readMaze():
-    with open('C:\\Users\\zhmis\\source\\repos\\Lab2_MazeGenerator\\Lab2_MazeGenerator\\Maze.txt') as file:
+    with open('Maze.txt') as file:
         maze_txt = file.read()
 
     maze_lines = maze_txt.split('\n')

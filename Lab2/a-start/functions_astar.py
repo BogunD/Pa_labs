@@ -74,7 +74,7 @@ def solveMaze_astar(maze, cost, start, end):
 
 
 def readMaze():
-    with open('C:\\Users\\zhmis\\source\\repos\\Lab2_MazeGenerator\\Lab2_MazeGenerator\\Maze.txt') as file:
+    with open('Maze.txt') as file:
         maze_txt = file.read()
     maze_lines = maze_txt.split('\n')
     maze_array = []
