@@ -113,4 +113,3 @@ def tryMaze():
     except TypeError:
         print("Не вдалося знайти шлях")
         return 'Type'
-
