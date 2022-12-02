@@ -1,0 +1,5 @@
+pull requests-> Lab 2 Maze (LDFS, A*) #5-> Code->
+Checkout with GitHub Desktop-> Clone-> Open in Visual Studio Code-> 
+PA_LABS ⇩
+  Lab2 ⇩
+    main.py -> ctrl +f5 -> press ENTER (In terminal)
