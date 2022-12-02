@@ -53,7 +53,7 @@ def solveMaze_ldfs(maze,  start, end):
     return True
 
 def readMaze():
-    with open('Maze.txt') as file:
+    with open('Lab2/ldfs/Maze.txt') as file:
         maze_txt = file.read()
 
     maze_lines = maze_txt.split('\n')
@@ -96,20 +96,4 @@ def findPosition(maze, num):
                 return(i-1, j-1)
         j = 0
 
-def tryMaze():
-    try:
-        maze = readMaze()
-        maze_copy = readMaze()
-        first_node = findPosition(maze, 4)
-        last_node = findPosition(maze, 5)
-        flag=solveMaze_ldfs(maze,first_node,last_node)
-        if(flag==True):
-            printMaze(maze,first_node,last_node)
-            print("Лабіринт пройдено успішно")
 
-        else:
-            printMaze(maze,first_node,last_node)
-            print("Не вдалося знайти шлях")
-    except TypeError:
-        print("Не вдалося знайти шлях")
-        return 'Type'
