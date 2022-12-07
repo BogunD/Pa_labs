@@ -1,4 +1,4 @@
-import numpy as np
+
 from .functions_astar import *
 
 def A_star():

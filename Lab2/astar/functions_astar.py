@@ -1,6 +1,6 @@
 import time
 import os
-import numpy as np
+
 class node:
     def __init__(self, parent=None, position=None):
         self.G = 0
