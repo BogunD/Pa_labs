@@ -1,44 +1,33 @@
 import time
 import os
 def solveMaze_ldfs(maze,  start, end):
-    flag = True
     if start is None or end is None:
         return
-    deadend = 0
     left_to_visit = [start]
     visited_nodes = [start]
     iter = 0
-    step  =  [(-1, 0 ), # вгору
-              ( 0, -1), # ліворуч
-              ( 1, 0 ), # вниз
-              ( 0, 1 )] # праворуч
+    step  =  [(-1, 0 ), 
+              ( 0, -1), 
+              ( 1, 0 ), 
+              ( 0, 1 )] 
     height, width = len(maze), len(maze[0])
     solution = [start]
-    stan = 0
-    iterations = 0
-    max_stan = 0
-    stan_list = []
     limit = 500
     while len(left_to_visit) > 0 and iter<limit:
-
-        stan = 0
         cur_node = left_to_visit.pop()
         if (cur_node == end):
             break
-
         for new_pos in step:
             node_pos = (cur_node[0] + new_pos[0],cur_node[1] + new_pos[1] )
             if (node_pos[0] > (height ) or
                 node_pos[0] < 0 or
                 node_pos[1] > (width ) or
                 node_pos[1] < 0):
-                deadend+=1
                 continue
             if maze[node_pos[0]][node_pos[1]] != 0 and maze[node_pos[0]][node_pos[1]] != 4 and maze[node_pos[0]][node_pos[1]] != 5:
                 continue
             if node_pos in visited_nodes:
                 continue
-
             visited_nodes.append(node_pos)
             maze[node_pos[0]][node_pos[1]] = 8
             printMaze(maze, start, end)
@@ -46,25 +35,21 @@ def solveMaze_ldfs(maze,  start, end):
             os.system("cls")
             left_to_visit.append(node_pos)
             solution.append(node_pos)
-            x,y = cur_node
     if(end not in visited_nodes):
-        return False
+        return False, len(visited_nodes)
     printMaze(maze, start, end)
-    return True
+    return True, len(visited_nodes)
 
 def readMaze():
     with open('Lab2/ldfs/Maze.txt') as file:
         maze_txt = file.read()
-
     maze_lines = maze_txt.split('\n')
-
     maze_array = []
     for i in maze_lines:
         maze_array.append([int(item) for item in i])
     return maze_array
 
 def printMaze(maze, start, end):
-    maze_char=[]
     i = 0
     j = 0
     for lines in maze:
@@ -83,7 +68,6 @@ def printMaze(maze, start, end):
         i+=1
         j = 0
         print('')
-
 
 def findPosition(maze, num):
     i = 0

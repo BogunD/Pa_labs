@@ -12,9 +12,7 @@ class node:
     def __eq__(self, other):
         return self.pos == other.pos
 
-
 def solveMaze_astar(maze, cost, start, end):
-    iterations = 0
     first_node = node(None, tuple(start))
     last_node = node(None, tuple(end))
     first_node.G = first_node.H = first_node.F = 0
@@ -24,10 +22,10 @@ def solveMaze_astar(maze, cost, start, end):
     left_to_visit.append(first_node)
     iter = 0
     max_iter = (len(maze) // 2) ** 10
-    step  =  [[-1, 0 ], # вгору
-              [ 0, -1], # ліворуч
-              [ 1, 0 ], # вниз
-              [ 0, 1 ]] # праворуч
+    step  =  [[-1, 0 ], 
+              [ 0, -1], 
+              [ 1, 0 ],
+              [ 0, 1 ]] 
     height, width = len(maze), len(maze[0])
     while len(left_to_visit) > 0 :
         iter += 1
@@ -38,11 +36,10 @@ def solveMaze_astar(maze, cost, start, end):
                 cur_node = j
                 cur_index = i
         if cur_node.pos == end:
-            return True
+            return True, len(visited_nodes)
         if iter > max_iter:
-            return False
+            return False, len(visited_nodes)
         left_to_visit.pop(cur_index)
-
         visited_nodes.append(cur_node)
         if maze[cur_node.pos[0]][cur_node.pos[1]] != 4 and maze[cur_node.pos[0]][cur_node.pos[1]] !=5:
             maze[cur_node.pos[0]][cur_node.pos[1]] = 8
@@ -52,7 +49,6 @@ def solveMaze_astar(maze, cost, start, end):
         children_list = []
         for new_pos in step:
             node_pos = (cur_node.pos[0] + new_pos[0], cur_node.pos[1] + new_pos[1])
-
             if (node_pos[0] > (height - 1) or
                 node_pos[0] < 0 or
                 node_pos[1] > (width -1) or
@@ -60,28 +56,18 @@ def solveMaze_astar(maze, cost, start, end):
                 continue
             if maze[node_pos[0]][node_pos[1]] != 0 and maze[node_pos[0]][node_pos[1]] != 4 and maze[node_pos[0]][node_pos[1]] != 5:
                 continue
-
             temp_node = node(cur_node, node_pos)
-
             children_list.append(temp_node)
         for child_node in children_list:
-
             if len([child_visited for child_visited in visited_nodes if child_visited == child_node]) > 0:
                 continue
-             # еврестична функція, використовуємо манхетенську відстань
             child_node.H = (abs((child_node.pos[0] - last_node.pos[0])) +
                             abs((child_node.pos[1] - last_node.pos[1])))
             child_node.G = cur_node.G + cost
-
             child_node.F = child_node.G + child_node.H
-
             if len([k for k in left_to_visit if child_node == k and child_node.G > k.G]) > 0:
                 continue
-
             left_to_visit.append(child_node)
-
-
-
 
 def readMaze():
     with open('Lab2/astar/Maze.txt') as file:
@@ -94,7 +80,6 @@ def readMaze():
 
 def printMaze(maze):
     print("# - пройдений шлях")
-
     for lines in maze:
         for ch in lines:
             if ch == 4:
@@ -109,7 +94,6 @@ def printMaze(maze):
                 print(' ', end =''),
         print('')
 
-
 def findPosition(maze, num):
     i = 0
     j = 0
@@ -120,4 +104,3 @@ def findPosition(maze, num):
             if ch == num:
                 return(i-1, j-1)
         j = 0
-
