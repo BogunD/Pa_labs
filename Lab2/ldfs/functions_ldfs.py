@@ -41,7 +41,7 @@ def solveMaze_ldfs(maze,  start, end):
     return True, len(visited_nodes)
 
 def readMaze():
-    with open('Pa_labs\Lab2\ldfs\Maze.txt') as file:
+    with open('ldfs\Maze.txt') as file:
         maze_txt = file.read()
     maze_lines = maze_txt.split('\n')
     maze_array = []
