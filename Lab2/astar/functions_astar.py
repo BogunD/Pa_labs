@@ -70,7 +70,7 @@ def solveMaze_astar(maze, cost, start, end):
             left_to_visit.append(child_node)
 
 def readMaze():
-    with open('Lab2/astar/Maze.txt') as file:
+    with open('astar/Maze.txt') as file:
         maze_txt = file.read()
     maze_lines = maze_txt.split('\n')
     maze_array = []
