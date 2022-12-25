@@ -8,16 +8,16 @@ def A_star():
         cost = 1
         flag,path = solveMaze_astar(maze,cost,first_node,last_node)
         os.system('cls')
-        print("A* алгоритм")
+        print("A* algorithm")
         printMaze(maze)
         if flag == True:
-            print("Лабіринт пройдено успішно")
-            print("Кількість пройдених кроків: ", path);
+            print("The maze was completed successfully")
+            print("Number of steps taken: ", path)
         else:
-            print("Не вдалося знайти шлях")
-            print("Кількість пройдених кроків: ", path);
+            print("The path could not be found")
+            print("Number of steps taken: ", path)
     except TypeError:
-        print("Не вдалося знайти шлях")
+        print("The path could not be found")
         return 'Type'
 
 
