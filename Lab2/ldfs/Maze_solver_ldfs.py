@@ -7,15 +7,14 @@ def LDFS():
         flag, path=solveMaze_ldfs(maze,first_node,last_node)
         if(flag==True):
             os.system("cls")
-            print("LDFS:")
+            print("LDFS algorithm:")
             printMaze(maze,first_node,last_node)
-            print("Лабіринт пройдено успішно")
-            print("Кількість пройдених кроків: ", path);
+            print("The maze was completed successfully")
+            print("Number of steps taken: ", path)
         else:
-            printMaze(maze,first_node,last_node)
-            print("Не вдалося знайти шлях")
-            print("Кількість пройдених кроків: ", path);
+            print("The path could not be found")
+            print("Number of steps taken: ", path)
     except TypeError:
-        print("Не вдалося знайти шлях")
+        print("The path could not be found")
         return 'Type'
     
