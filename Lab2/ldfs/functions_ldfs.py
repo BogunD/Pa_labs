@@ -52,6 +52,7 @@ def readMaze():
 def printMaze(maze, start, end):
     i = 0
     j = 0
+    print("# - path")
     for lines in maze:
         for ch in lines:
             if (i,j) == start:

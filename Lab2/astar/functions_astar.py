@@ -79,7 +79,7 @@ def readMaze():
     return maze_array
 
 def printMaze(maze):
-    print("# - пройдений шлях")
+    print("# - path")
     for lines in maze:
         for ch in lines:
             if ch == 4:
