@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from random import randint
 import random as rd
 from Classes import *
@@ -31,7 +30,6 @@ def initialize():
         items.append(item)
     backpack = Backpack(250,items)
     return backpack, items_num, items
-
 
 def calculate_cost(backpack, population, capacity):
     cost = np.empty(population.shape[0])
@@ -104,6 +102,7 @@ def local_optimization(backpack, population, pop_size, iterations):
     max_function = np.where(function_last_gen == np.max(function_last_gen))
     parameters.append(population[max_function[0][0],:])
     return parameters, function_history
+
 def print_result(selected_items, items):
     j = 0
     total_weight = 0
@@ -119,4 +118,3 @@ def print_result(selected_items, items):
     print("\n\nAMOUNT OF ITEMS IN BACKPACK: ", j)
     print("TOTAL WEIGHT: ", total_weight)
     print("TOTAL PRICE: ", total_price)
-
